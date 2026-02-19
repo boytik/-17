@@ -22,7 +22,7 @@ struct ParentNestApp: App {
                 .environmentObject(nestMemory)
                 .preferredColorScheme(.dark)
         }
-        .onChange(of: scenePhase) { _, newPhase in
+        .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
                 nestMemory.rescheduleTodayNotificationsIfNeeded()
             }
