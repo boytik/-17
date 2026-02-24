@@ -49,6 +49,9 @@ final class GrowthGardenBrain: ObservableObject {
             return
         }
 
+        // Recompute stats from actual day data (fixes corrupted counts)
+        memory.recomputeGuardianProgress()
+
         // Day summary
         let todayKey = NestDateHelper.todayKey()
         if let todayCradle = memory.loadDayCradle(profileId: profileId, dateKey: todayKey) {

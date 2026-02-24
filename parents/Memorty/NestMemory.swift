@@ -198,6 +198,79 @@ final class NestMemory: ObservableObject {
         return results
     }
 
+    /// Load all saved days for a profile (for stats recompute).
+    func loadAllCradles(profileId: UUID) -> [DayCradle] {
+        let prefix = "\(DrawerKey.dayPrefix)\(profileId.uuidString)"
+        let cradles: [DayCradle] = loadAllFiles(withPrefix: prefix)
+        return cradles.sorted { ($0.dateKey) < ($1.dateKey) }
+    }
+
+    /// Recompute guardian stats from actual day data — fixes corrupted counts.
+    func recomputeGuardianProgress() {
+        // Aggregate across all profiles (guardian progress is app-wide)
+        let allCradles = profiles.flatMap { loadAllCradles(profileId: $0.id) }
+        let todayKey = NestDateHelper.todayKey()
+        let calendar = Calendar.current
+
+        // Active days: unique dates with at least 1 block done
+        let activeDateKeys = Set(allCradles
+            .filter { $0.doneLullabies >= 1 }
+            .map { $0.dateKey })
+
+        // Streak days: dates with ≥50% completion, sorted
+        let streakDateKeys = allCradles
+            .filter { $0.totalLullabies > 0 && Double($0.doneLullabies) / Double($0.totalLullabies) >= 0.5 }
+            .map { $0.dateKey }
+        let sortedStreakDates = Array(Set(streakDateKeys)).sorted()
+
+        // Current streak: consecutive days ending at today or yesterday
+        var currentStreak = 0
+        if let lastStreak = sortedStreakDates.last,
+           let lastDate = NestDateHelper.date(from: lastStreak),
+           let today = NestDateHelper.date(from: todayKey) {
+            let daysSinceLast = calendar.dateComponents([.day], from: lastDate, to: today).day ?? 999
+            if daysSinceLast <= 1 {
+                currentStreak = 1
+                var check = lastDate
+                for key in sortedStreakDates.reversed().dropFirst() {
+                    guard let d = NestDateHelper.date(from: key) else { continue }
+                    let diff = calendar.dateComponents([.day], from: d, to: check).day ?? 999
+                    if diff == 1 {
+                        currentStreak += 1
+                        check = d
+                    } else { break }
+                }
+            }
+        }
+
+        // Longest streak (guard: 1..<0 crashes with "Can't form range with end < start")
+        var longestStreak = sortedStreakDates.isEmpty ? 0 : 1
+        var run = 1
+        if sortedStreakDates.count >= 2 {
+            for i in 1..<sortedStreakDates.count {
+                guard let prev = NestDateHelper.date(from: sortedStreakDates[i - 1]),
+                      let curr = NestDateHelper.date(from: sortedStreakDates[i]) else { continue }
+                let diff = calendar.dateComponents([.day], from: prev, to: curr).day ?? 999
+                if diff == 1 {
+                    run += 1
+                } else {
+                    longestStreak = max(longestStreak, run)
+                    run = 1
+                }
+            }
+            longestStreak = max(longestStreak, run)
+        }
+        longestStreak = max(longestStreak, currentStreak)
+
+        var gp = guardianProgress
+        gp.completedDaysCount = activeDateKeys.count
+        gp.currentStreak = currentStreak
+        gp.longestStreak = longestStreak
+        gp.lastActiveDate = sortedStreakDates.last ?? activeDateKeys.sorted().last ?? ""
+        guardianProgress = gp
+        Self.saveToDefaults(gp, key: DrawerKey.guardian)
+    }
+
     private func removeAllDays(for profileId: UUID) {
         let prefix = "\(DrawerKey.dayPrefix)\(profileId.uuidString)"
         removeFilesWithPrefix(prefix)
@@ -213,13 +286,20 @@ final class NestMemory: ObservableObject {
     func recordDayCompletion(dateKey: String, completionRatio: Double) {
         let today = dateKey
         var gp = guardianProgress
+        let isSameDay = (gp.lastActiveDate == today)
 
-        gp.completedDaysCount += 1
+        // Only count each day once — was incrementing on every block mark (bug)
+        if !isSameDay {
+            gp.completedDaysCount += 1
+        }
 
         // Streak logic
         if completionRatio >= 0.5 {
             if gp.lastActiveDate.isEmpty {
                 gp.currentStreak = 1
+            } else if isSameDay {
+                // Same day, just crossed 50% — ensure streak ≥ 1
+                if gp.currentStreak == 0 { gp.currentStreak = 1 }
             } else if let lastDate = NestDateHelper.date(from: gp.lastActiveDate),
                       let currentDate = NestDateHelper.date(from: today) {
                 let daysBetween = Calendar.current.dateComponents(
