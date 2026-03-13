@@ -15,7 +15,7 @@ struct NestDocumentContainer: View {
 
     @State private var orientation: UIDeviceOrientation = .portrait
 
-    private var homeDestination: URL? { DocumentValidationService.getSavedDestination() }
+    private var homeDestination: URL? { DocumentValidationService().getSavedURL() }
 
     var body: some View {
         NestDocumentContainerContent(
@@ -136,7 +136,7 @@ private struct NestDocumentContainerContent: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
                 safeInsets = windowSafeAreaInsets()
                 interfaceOrientation = windowInterfaceOrientation()
-                print("[SafeArea] refreshed: iface=\(interfaceOrientation.rawValue) top=\(safeInsets.top) left=\(safeInsets.left) right=\(safeInsets.right)")
+//                print("[SafeArea] refreshed: iface=\(interfaceOrientation.rawValue) top=\(safeInsets.top) left=\(safeInsets.left) right=\(safeInsets.right)")
             }
         }
     }

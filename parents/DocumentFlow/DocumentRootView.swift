@@ -5,32 +5,56 @@
 import SwiftUI
 import StoreKit
 
-// MARK: - 🌐 Document Root View
+// MARK: - Document Root View
 
 struct DocumentRootView: View {
 
     @EnvironmentObject var flowState: DocumentFlowState
     @EnvironmentObject var nestMemory: NestMemory
 
+    @AppStorage("nest_review_requested") private var hasShownRatingPrompt = false
+
     var body: some View {
-        Group {
+        ZStack {
             switch flowState.currentPhase {
             case .loading:
                 DocumentSplashScreenView()
 
-            case .webView(let dest):
-                NestDocumentRootContent(destination: dest)
+            case .webView(let url):
+                NestDocumentRootContent(url: url)
                     .environmentObject(nestMemory)
+                    .id(url.absoluteString)
+                    .onAppear {
+                        showAppRatingIfNeeded()
+                        NestAppDelegate.shared?.orientationLock = [.portrait, .landscapeLeft, .landscapeRight]
+                    }
+
+            case .webViewEmpty:
+                NestDocumentRootContent(url: URL(string: "about:blank")!)
+                    .environmentObject(nestMemory)
+                    .onAppear {
+                        NestAppDelegate.shared?.orientationLock = [.portrait, .landscapeLeft, .landscapeRight]
+                    }
 
             case .nativeApp:
                 NativeAppRootView()
                     .environmentObject(nestMemory)
             }
         }
+        .animation(.easeInOut(duration: 0.4), value: flowState.currentPhase)
         .onAppear {
             if case .loading = flowState.currentPhase {
-                print("[DocumentFlow] DocumentRootView onAppear, starting flow")
                 flowState.runFlow()
+            }
+        }
+    }
+
+    private func showAppRatingIfNeeded() {
+        guard !hasShownRatingPrompt else { return }
+        hasShownRatingPrompt = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                SKStoreReviewController.requestReview(in: scene)
             }
         }
     }
@@ -39,8 +63,8 @@ struct DocumentRootView: View {
 // MARK: - Phase Helpers
 
 extension DocumentFlowPhase {
-    var currentDestination: URL? {
-        if case .webView(let dest) = self { return dest }
+    var currentURL: URL? {
+        if case .webView(let url) = self { return url }
         return nil
     }
 }
@@ -49,60 +73,18 @@ extension DocumentFlowPhase {
 
 struct NestDocumentRootContent: View {
 
-    let destination: URL
+    let url: URL
     @EnvironmentObject var nestMemory: NestMemory
-
-    @State private var currentDestination: URL
-    @State private var showError = false
-    @State private var reloadKey = 0
-
-    init(destination: URL) {
-        self.destination = destination
-        _currentDestination = State(initialValue: destination)
-    }
+    @EnvironmentObject var flowState: DocumentFlowState
 
     var body: some View {
         NestDocumentWrapper(
-            destination: currentDestination,
-            onError: { showError = true },
-            on404Detected: { loadFallback() }
+            destination: url,
+            onError: { flowState.handleWebViewError() },
+            on404Detected: { flowState.handleWebViewError() }
         )
-        .id(reloadKey)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
-        .onAppear {
-            NestAppDelegate.shared?.orientationLock = [.portrait, .landscapeLeft, .landscapeRight]
-            requestReviewIfNeeded()
-        }
-        .alert("Load Error", isPresented: $showError) {
-            Button("Retry") { reloadCurrent() }
-            Button("Use Fallback") { loadFallback() }
-        } message: {
-            Text("Could not load the page. Retry or use fallback.")
-        }
-    }
-
-    private func requestReviewIfNeeded() {
-        let key = "nest_review_requested"
-        guard !UserDefaults.standard.bool(forKey: key) else { return }
-        UserDefaults.standard.set(true, forKey: key)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            if let scene = UIApplication.shared.connectedScenes
-                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-                SKStoreReviewController.requestReview(in: scene)
-            }
-        }
-    }
-
-    private func reloadCurrent() {
-        showError = false
-        reloadKey += 1
-    }
-
-    private func loadFallback() {
-        print("[DocumentFlow] NestDocumentRootContent loadFallback")
-        currentDestination = DocumentValidationService.fallbackDestination
-        showError = false
     }
 }
 

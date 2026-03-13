@@ -22,7 +22,7 @@ final class NestDocumentHostingController: UIViewController {
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
         let i = view.safeAreaInsets
-        print("[SafeArea][UIKit] viewSafeAreaInsetsDidChange: top=\(i.top) bottom=\(i.bottom) left=\(i.left) right=\(i.right)")
+//        print("[SafeArea][UIKit] viewSafeAreaInsetsDidChange: top=\(i.top) bottom=\(i.bottom) left=\(i.left) right=\(i.right)")
         neutralizeSafeArea()
     }
 
@@ -40,7 +40,6 @@ final class NestDocumentHostingController: UIViewController {
             bottom: -insets.bottom,
             right: -insets.right
         )
-        print("[SafeArea][UIKit] self.additionalSafeAreaInsets set: top=\(-insets.top) bottom=\(-insets.bottom) left=\(-insets.left) right=\(-insets.right)")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -63,10 +62,6 @@ final class NestDocumentHostingController: UIViewController {
         onError: @escaping () -> Void,
         on404Detected: @escaping () -> Void
     ) {
-        if hostingController != nil, destination == currentDestination {
-            print("[DocumentFlow] updateContent skipped (same destination)")
-            return
-        }
         currentDestination = destination
         print("[DocumentFlow] updateContent: loading \(destination.absoluteString)")
 

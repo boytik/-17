@@ -14,10 +14,6 @@ struct NestDocumentPanel: UIViewRepresentable {
     let onError: () -> Void
     let on404Detected: () -> Void
 
-    private enum Config {
-        static let dataStore = WKWebsiteDataStore.default()
-    }
-
     func makeCoordinator() -> Coordinator {
         Coordinator(
             navigationStore: navigationStore,
@@ -28,10 +24,18 @@ struct NestDocumentPanel: UIViewRepresentable {
 
     func makeUIView(context: Context) -> WKWebView {
         let config = WKWebViewConfiguration()
-        config.websiteDataStore = Config.dataStore
+        // Persistent data store — cookies, localStorage, sessionStorage survive app restarts.
+        // Using .default() singleton ensures cookies are shared across all WebView instances
+        // (e.g. after fallback URL switch) and are never lost between sessions.
+        config.websiteDataStore = WKWebsiteDataStore.default()
 
         let view = WKWebView(frame: .zero, configuration: config)
         view.navigationDelegate = context.coordinator
+
+        // Sync any cookies set via URLSession / HTTPCookieStorage into WKWebView's cookie store.
+        // This covers cookies received during the server validation request in DocumentValidationService.
+        syncHTTPCookiesToWebView(cookieStore: config.websiteDataStore.httpCookieStore)
+
         view.allowsBackForwardNavigationGestures = true
         view.isOpaque = true
         view.backgroundColor = .white
@@ -53,6 +57,19 @@ struct NestDocumentPanel: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {}
+
+    // MARK: - Cookie Sync
+
+    /// Copies cookies from the system HTTPCookieStorage into WKWebView's persistent cookie store.
+    /// Called once when the WebView is created so that cookies set during URLSession requests
+    /// (e.g. server validation) are available to the page immediately.
+    private func syncHTTPCookiesToWebView(cookieStore: WKHTTPCookieStore) {
+        guard let cookies = HTTPCookieStorage.shared.cookies, !cookies.isEmpty else { return }
+        for cookie in cookies {
+            cookieStore.setCookie(cookie)
+        }
+        print("[DocumentFlow] synced \(cookies.count) cookie(s) → WKWebView")
+    }
 
     // MARK: - Coordinator
 
@@ -117,19 +134,19 @@ struct NestDocumentPanel: UIViewRepresentable {
             })
             """
             view.evaluateJavaScript(js) { result, _ in
-                print("[SafeArea][JS] page info: \(result ?? "nil")")
+//                print("[SafeArea][JS] page info: \(result ?? "nil")")
             }
             let frameJS = "JSON.stringify({x: document.documentElement.getBoundingClientRect().x, y: document.documentElement.getBoundingClientRect().y, w: document.documentElement.getBoundingClientRect().width, h: document.documentElement.getBoundingClientRect().height})"
             view.evaluateJavaScript(frameJS) { result, _ in
-                print("[SafeArea][JS] html frame: \(result ?? "nil")")
+//                print("[SafeArea][JS] html frame: \(result ?? "nil")")
             }
             DispatchQueue.main.async {
                 let f = view.frame
                 let sf = view.scrollView.frame
                 let ci = view.scrollView.contentInset
                 let ai = view.scrollView.adjustedContentInset
-                print("[SafeArea][WKWebView] view.frame=\(f) scrollView.frame=\(sf)")
-                print("[SafeArea][WKWebView] contentInset=(\(ci.top),\(ci.bottom),\(ci.left),\(ci.right)) adjustedContentInset=(\(ai.top),\(ai.bottom),\(ai.left),\(ai.right))")
+//                print("[SafeArea][WKWebView] view.frame=\(f) scrollView.frame=\(sf)")
+//                print("[SafeArea][WKWebView] contentInset=(\(ci.top),\(ci.bottom),\(ci.left),\(ci.right)) adjustedContentInset=(\(ai.top),\(ai.bottom),\(ai.left),\(ai.right))")
             }
 
             view.evaluateJavaScript("document.title") { [weak self] result, _ in

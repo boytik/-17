@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Combine
+
 /// Typography presets for the app — readable, calm, premium feel.
 enum NestTypography {
 
