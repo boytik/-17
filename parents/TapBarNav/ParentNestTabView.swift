@@ -46,6 +46,7 @@ struct ParentNestTabView: View {
                     .transition(.opacity)
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .animation(.easeInOut(duration: 0.25), value: selectedNestTab)
     }
 
@@ -59,9 +60,7 @@ struct ParentNestTabView: View {
         }
         .padding(.top, 10)
         .padding(.bottom, bottomSafePadding)
-        .background(
-            nestTabBarBackground
-        )
+        .background(NestTabBarBackground())
     }
 
     private func tabBarButton(for tab: NestTab) -> some View {
@@ -117,42 +116,6 @@ struct ParentNestTabView: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-    }
-
-    // MARK: – Tab Bar Background
-
-    private var nestTabBarBackground: some View {
-        ZStack(alignment: .top) {
-            // Blur-like dark surface
-            Rectangle()
-                .fill(NestPalette.midnightNest.opacity(0.92))
-
-            // Top separator with gold hint
-            LinearGradient(
-                colors: [
-                    NestPalette.honeyGlow.opacity(0.15),
-                    NestPalette.honeyGlow.opacity(0.03),
-                    Color.clear
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .frame(height: 1)
-
-            // Subtle inner glow
-            Rectangle()
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            NestPalette.sleepyCharcoal.opacity(0.4),
-                            NestPalette.midnightNest.opacity(0.0)
-                        ],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
-                .frame(height: 12)
-        }
     }
 
     // MARK: – Safe Area Helper

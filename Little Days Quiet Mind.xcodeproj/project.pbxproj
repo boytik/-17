@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3EFBF44B2F640EBC006DC06E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 3EFBF44A2F640EBC006DC06E /* FirebaseMessaging */; };
+		3EFBF44E2F641200006DC06E /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3EFBF44F2F641200006DC06E /* FirebaseCore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		3E60B0322F4653A7006605BA /* Little Days Quiet Mind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little Days Quiet Mind.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EFBF44C2F640FDB006DC06E /* Little Days Quiet Mind.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Little Days Quiet Mind.entitlements"; sourceTree = "<group>"; };
+		3EFBF44D2F640FE0006DC06E /* Little-Days-Quiet-Mind-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Little-Days-Quiet-Mind-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +30,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EFBF44B2F640EBC006DC06E /* FirebaseMessaging in Frameworks */,
+				3EFBF44E2F641200006DC06E /* FirebaseCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,6 +41,8 @@
 		3E60B0292F4653A7006605BA = {
 			isa = PBXGroup;
 			children = (
+				3EFBF44D2F640FE0006DC06E /* Little-Days-Quiet-Mind-Info.plist */,
+				3EFBF44C2F640FDB006DC06E /* Little Days Quiet Mind.entitlements */,
 				3E60B0342F4653A7006605BA /* parents */,
 				3E60B0332F4653A7006605BA /* Products */,
 			);
@@ -65,6 +76,8 @@
 			);
 			name = "Little Days Quiet Mind";
 			packageProductDependencies = (
+				3EFBF44A2F640EBC006DC06E /* FirebaseMessaging */,
+				3EFBF44F2F641200006DC06E /* FirebaseCore */,
 			);
 			productName = parents;
 			productReference = 3E60B0322F4653A7006605BA /* Little Days Quiet Mind.app */;
@@ -94,6 +107,9 @@
 			);
 			mainGroup = 3E60B0292F4653A7006605BA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3EFBF4492F640EBC006DC06E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3E60B0332F4653A7006605BA /* Products */;
 			projectDirPath = "";
@@ -251,11 +267,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Little Days Quiet Mind.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Little-Days-Quiet-Mind-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Little Days: Quiet Mind";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -268,7 +286,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = asd.parents;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maraholz.littledaysquietmind;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -290,11 +308,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Little Days Quiet Mind.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Little-Days-Quiet-Mind-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Little Days: Quiet Mind";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -307,7 +327,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = asd.parents;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maraholz.littledaysquietmind;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -346,6 +366,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3EFBF4492F640EBC006DC06E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3EFBF44A2F640EBC006DC06E /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3EFBF4492F640EBC006DC06E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		3EFBF44F2F641200006DC06E /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3EFBF4492F640EBC006DC06E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3E60B02A2F4653A7006605BA /* Project object */;
 }

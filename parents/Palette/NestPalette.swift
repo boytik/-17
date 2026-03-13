@@ -15,6 +15,9 @@ enum NestPalette {
     /// Deep black — the main canvas, like a calm night sky over the nursery.
     static let midnightNest        = Color(hex: "0D0D0F")
 
+    /// Safe area background — warm dark tone for notch/status bar region.
+    static let safeAreaNest        = Color(hex: "2D221E")
+
     /// Dark gold — warm accent, like a nightlight glow in a child's room.
     static let honeyGlow           = Color(hex: "B8860B")
 

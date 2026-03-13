@@ -9,6 +9,8 @@ import SwiftUI
 @main
 struct ParentNestApp: App {
 
+    @UIApplicationDelegateAdaptor(NestAppDelegate.self) var appDelegate
+    @StateObject private var flowState = DocumentFlowState()
     @StateObject private var nestMemory = NestMemory.shared
     @Environment(\.scenePhase) private var scenePhase
 
@@ -18,7 +20,8 @@ struct ParentNestApp: App {
 
     var body: some Scene {
         WindowGroup {
-            CradleSplashGate()
+            DocumentRootView()
+                .environmentObject(flowState)
                 .environmentObject(nestMemory)
                 .preferredColorScheme(.dark)
         }
