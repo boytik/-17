@@ -1,0 +1,246 @@
+/* 
+  Localizable.strings
+  Little Days Quiet Mind
+  English (en)
+*/
+
+/* Format & placeholders */
+"%lld ✦ stardust collected" = "%lld ✦ stardust collected";
+"%lld ✦ to next level" = "%lld ✦ to next level";
+"%lld blocks • %@" = "%lld blocks • %@";
+"%lld of %lld badges earned" = "%lld of %lld badges earned";
+"%lld of %lld blocks done" = "%lld of %lld blocks done";
+"%lld/%lld" = "%lld/%lld";
+"Duration: %lld min" = "Duration: %lld min";
+"Lv.%lld" = "Lv.%lld";
+"Reward: +%lld ✦ stardust" = "Reward: +%lld ✦ stardust";
+"Save your current %lld blocks as a reusable template" = "Save your current %lld blocks as a reusable template";
+"Status: %@" = "Status: %@";
+"The day is set up for %@" = "The day is set up for %@";
+"This will replace your current %lld blocks with the template." = "This will replace your current %lld blocks with the template.";
+"Unlocked %@" = "Unlocked %@";
+"Welcome to %@" = "Welcome to %@";
+"🌙 %@ — Weekly Snapshot" = "🌙 %@ — Weekly Snapshot";
+
+/* UI – General */
+":" = ":";
+"ACTIVE" = "ACTIVE";
+"Active" = "Active";
+"Active Days" = "Active Days";
+"Active\nDays" = "Active\nDays";
+"Activity Breakdown" = "Activity Breakdown";
+"Add" = "Add";
+"Add Block" = "Add Block";
+"Add blocks yourself or apply a template later" = "Add blocks yourself or apply a template later";
+"Add First Block" = "Add First Block";
+"Add to Day" = "Add to Day";
+"Add to Family" = "Add to Family";
+"Add your first block to start the day" = "Add your first block to start the day";
+"Adjustable anytime in Settings" = "Adjustable anytime in Settings";
+"Age Group" = "Age Group";
+"Almost There" = "Almost There";
+"Almost cozy…" = "Almost cozy…";
+"8 PM – 8 AM" = "8 PM – 8 AM";
+"9 PM – 7 AM" = "9 PM – 7 AM";
+"10 PM – 6 AM" = "10 PM – 6 AM";
+"Apply Template" = "Apply Template";
+"Badges" = "Badges";
+"Badges Earned" = "Badges Earned";
+"Best Streak" = "Best Streak";
+"Best\nStreak" = "Best\nStreak";
+"Begin Your Journey" = "Begin Your Journey";
+"Block name" = "Block name";
+"Block name (optional)" = "Block name (optional)";
+"blocks" = "blocks";
+"Calm nudges, not alarms" = "Calm nudges, not alarms";
+"Cancel" = "Cancel";
+"Change" = "Change";
+"Choose Your Avatar" = "Choose Your Avatar";
+"Complete a few days to unlock insights" = "Complete a few days to unlock insights";
+"Copy to Clipboard" = "Copy to Clipboard";
+"Copy to Tomorrow" = "Copy to Tomorrow";
+"Current\nStreak" = "Current\nStreak";
+"Daily routine without stress" = "Daily routine without stress";
+"Daily routine, without the stress" = "Daily routine, without the stress";
+"Day Note" = "Day Note";
+"Delete" = "Delete";
+"Done" = "Done";
+"Drag, move, adjust — one tap" = "Drag, move, adjust — one tap";
+"e.g. Morning nap, Lunch" = "e.g. Morning nap, Lunch";
+"e.g. Weekday routine" = "e.g. Weekday routine";
+"Earn stardust for every block" = "Earn stardust for every block";
+"Earned" = "Earned";
+"Earned Badges" = "Earned Badges";
+"Edit" = "Edit";
+"Edit Profile" = "Edit Profile";
+"Empty day or use a template — you can always add blocks or apply templates later" = "Empty day or use a template — you can always add blocks or apply templates later";
+"Enable notifications for reminders" = "Enable notifications for reminders";
+"Erase everything and start fresh" = "Erase everything and start fresh";
+"Family Nest" = "Family Nest";
+"Flexible Timeline" = "Flexible Timeline";
+"From" = "From";
+"Gentle Reminders" = "Gentle Reminders";
+"Go Back" = "Go Back";
+"Gathering stardust…" = "Gathering stardust…";
+"Growth" = "Growth";
+"Growth Garden" = "Growth Garden";
+"Grow Together" = "Grow Together";
+"Hello, world!" = "Hello, world!";
+"Hour" = "Hour";
+"How did it go?" = "How did it go?";
+"How should we nudge you?" = "How should we nudge you?";
+"How to Start?" = "How to Start?";
+"Insights" = "Insights";
+"Let's Go!" = "Let's Go!";
+"Lifetime Statistics" = "Lifetime Statistics";
+"Lighting the nightlight…" = "Lighting the nightlight…";
+"Little One" = "Little One";
+"Little Ones" = "Little Ones";
+"Little star's name" = "Little star's name";
+"Mark As" = "Mark As";
+"Minute" = "Minute";
+"Nest" = "Nest";
+"More" = "More";
+"Move +15 min" = "Move +15 min";
+"Move +30 min" = "Move +30 min";
+"Name" = "Name";
+"Name (optional)" = "Name (optional)";
+"New Block" = "New Block";
+"New Little One" = "New Little One";
+"Next" = "Next";
+"No profiles yet — add your first little one" = "No profiles yet — add your first little one";
+"No templates yet" = "No templates yet";
+"Notification Style" = "Notification Style";
+"Notifications enabled" = "Notifications enabled";
+"Notifications off — tap to open Settings" = "Notifications off — tap to open Settings";
+"Optional — what happened?" = "Optional — what happened?";
+"Or use a template" = "Or use a template";
+"Overwrite" = "Overwrite";
+"Overwrite Tomorrow?" = "Overwrite Tomorrow?";
+"Parent Avatar" = "Parent Avatar";
+"Preparing gentle rhythms…" = "Preparing gentle rhythms…";
+"Preview" = "Preview";
+"Profiles" = "Profiles";
+"Quick Note" = "Quick Note";
+"Quiet" = "Quiet";
+"Quiet Hours" = "Quiet Hours";
+"Quiet Mode Off" = "Quiet Mode Off";
+"Quiet Mode On" = "Quiet Mode On";
+"Remove Block" = "Remove Block";
+"Remove Profile" = "Remove Profile";
+"Replace" = "Replace";
+"Replace blocks?" = "Replace blocks?";
+"Reset" = "Reset";
+"Reset All Data" = "Reset All Data";
+"Reset Everything?" = "Reset Everything?";
+"Rhythm & Streaks" = "Rhythm & Streaks";
+"Save as Template" = "Save as Template";
+"Save Changes" = "Save Changes";
+"Save Note" = "Save Note";
+"Save Template" = "Save Template";
+"Save your current day as a template to reuse it" = "Save your current day as a template to reuse it";
+"See how your rhythm evolves" = "See how your rhythm evolves";
+"Send a snapshot of your week to a partner" = "Send a snapshot of your week to a partner";
+"Share Summary" = "Share Summary";
+"Share with Partner" = "Share with Partner";
+"Skip" = "Skip";
+"Skipped" = "Skipped";
+"stardust" = "stardust";
+"Start Time" = "Start Time";
+"Start with empty day" = "Start with empty day";
+"Start with Empty Day" = "Start with Empty Day";
+"Tap to add a note for this day" = "Tap to add a note for this day";
+"Template name" = "Template name";
+"The nest is empty" = "The nest is empty";
+"This time overlaps with existing blocks" = "This time overlaps with existing blocks";
+"This Week" = "This Week";
+"This will erase all profiles, routines, progress, and badges. This cannot be undone." = "This will erase all profiles, routines, progress, and badges. This cannot be undone.";
+"To" = "To";
+"Today" = "Today";
+"Today's Summary" = "Today's Summary";
+"Tomorrow already has a plan. Copying will replace it." = "Tomorrow already has a plan. Copying will replace it.";
+"Total Stardust" = "Total Stardust";
+"Upcoming" = "Upcoming";
+"v1.0 • Made with 💛" = "v1.0 • Made with 💛";
+"Warming up the nest…" = "Warming up the nest…";
+"Weekly average" = "Weekly average";
+"We'll tailor the day just right" = "We'll tailor the day just right";
+"You can always change this later" = "You can always change this later";
+"Your complete parenting journey in numbers" = "Your complete parenting journey in numbers";
+"Your Little One" = "Your Little One";
+"Your Nest is Ready!" = "Your Nest is Ready!";
+"Your space, your rules" = "Your space, your rules";
+
+/* Enums – BlockKind */
+"Sleep" = "Sleep";
+"Meal" = "Meal";
+"Nap" = "Nap";
+"Walk" = "Walk";
+"Play" = "Play";
+"Bath" = "Bath";
+"Reading" = "Reading";
+"Free Time" = "Free Time";
+"Ritual" = "Ritual";
+
+/* Enums – MoodStamp */
+"Calm" = "Calm";
+"Neutral" = "Neutral";
+"Tough" = "Tough";
+
+/* Enums – AgeNestGroup */
+"Hatchling (0–3 mo)" = "Hatchling (0–3 mo)";
+"Nestling (4–6 mo)" = "Nestling (4–6 mo)";
+"Crawler (7–12 mo)" = "Crawler (7–12 mo)";
+"Toddler (1–2 yr)" = "Toddler (1–2 yr)";
+"Explorer (3–4 yr)" = "Explorer (3–4 yr)";
+"Adventurer (5–7 yr)" = "Adventurer (5–7 yr)";
+"0–3m" = "0–3m";
+"4–6m" = "4–6m";
+"7–12m" = "7–12m";
+"1–2y" = "1–2y";
+"3–4y" = "3–4y";
+"5–7y" = "5–7y";
+
+/* Enums – GuardianLevel */
+"Seedling" = "Seedling";
+"Sprout" = "Sprout";
+"Blossom" = "Blossom";
+"Guardian" = "Guardian";
+"Elder Tree" = "Elder Tree";
+
+/* Enums – TemplateStyle */
+"Structured" = "Structured";
+
+/* Enums – ReminderStyle */
+"Whisper" = "Whisper";
+"Balanced" = "Balanced";
+"Clockwork" = "Clockwork";
+"One gentle nudge, no repeats" = "One gentle nudge, no repeats";
+"Nudge + soft follow-up" = "Nudge + soft follow-up";
+"Nudge + quick follow-up" = "Nudge + quick follow-up";
+
+/* Template style subtitles (onboarding) */
+"Longer naps, gentle flow, minimal transitions" = "Longer naps, gentle flow, minimal transitions";
+"More outdoor time, engaging play sessions" = "More outdoor time, engaging play sessions";
+"Consistent timing, clear blocks, routines" = "Consistent timing, clear blocks, routines";
+
+/* Quick tips (onboarding) */
+"Tap any block to mark it done" = "Tap any block to mark it done";
+"Drag blocks to rearrange" = "Drag blocks to rearrange";
+"Earn stardust for each completion" = "Earn stardust for each completion";
+
+/* Growth Garden labels */
+"Avg" = "Avg";
+
+/* App name */
+"Little Days: Quiet Mind" = "Little Days: Quiet Mind";
+
+/* Symbols (pass-through) */
+"✦" = "✦";
+"⭐️" = "⭐️";
+"🌙" = "🌙";
+"🎉" = "🎉";
+"📅" = "📅";
+"🔒 Not yet unlocked" = "🔒 Not yet unlocked";
+"🔥" = "🔥";
+"🪹" = "🪹";

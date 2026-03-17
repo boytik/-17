@@ -82,11 +82,11 @@ struct GrowthGardenView: View {
     private var gardenHeader: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text("Growth Garden")
+                Text(NSLocalizedString("Growth Garden", comment: ""))
                     .font(NestTypography.cradleTitle)
                     .foregroundColor(NestPalette.parentVoice)
 
-                Text("See how your rhythm evolves")
+                Text(NSLocalizedString("See how your rhythm evolves", comment: ""))
                     .font(NestTypography.whisperCaption)
                     .foregroundColor(NestPalette.tenderWhisper)
             }
@@ -186,7 +186,7 @@ struct GrowthGardenView: View {
                         .font(NestTypography.guardianHeadline)
                         .foregroundColor(NestPalette.parentVoice)
 
-                    Text("\(gp.stardustToNextLevel) ✦ to next level")
+                    Text(String(format: NSLocalizedString("%lld ✦ to next level", comment: ""), gp.stardustToNextLevel))
                         .font(NestTypography.whisperCaption)
                         .foregroundColor(NestPalette.tenderWhisper)
 
@@ -218,32 +218,32 @@ struct GrowthGardenView: View {
         let summary = brain.daySummary
 
         return VStack(alignment: .leading, spacing: 12) {
-            Text("Today's Summary")
+            Text(NSLocalizedString("Today's Summary", comment: ""))
                 .font(NestTypography.guardianHeadline)
                 .foregroundColor(NestPalette.parentVoice)
 
             HStack(spacing: 10) {
                 statMiniCard(
                     value: "\(summary?.doneCount ?? 0)",
-                    label: "Done",
+                    label: NSLocalizedString("Done", comment: ""),
                     color: NestPalette.calmBreath,
                     icon: "checkmark.circle.fill"
                 )
                 statMiniCard(
                     value: "\(summary?.movedCount ?? 0)",
-                    label: "Moved",
+                    label: NSLocalizedString("Moved", comment: ""),
                     color: NestPalette.driftingCloud,
                     icon: "arrow.right.circle.fill"
                 )
                 statMiniCard(
                     value: "\(summary?.skippedCount ?? 0)",
-                    label: "Skipped",
+                    label: NSLocalizedString("Skipped", comment: ""),
                     color: NestPalette.gentleBlush,
                     icon: "xmark.circle"
                 )
                 statMiniCard(
                     value: "+\(summary?.totalXPEarned ?? 0)✦",
-                    label: "Earned",
+                    label: NSLocalizedString("Earned", comment: ""),
                     color: NestPalette.stardustReward,
                     icon: "star.fill"
                 )
@@ -252,7 +252,7 @@ struct GrowthGardenView: View {
             // Completion percentage bar
             completionBarView(
                 percent: summary?.completionPercent ?? 0,
-                label: "Day completion"
+                label: NSLocalizedString("Day completion", comment: "")
             )
         }
     }
@@ -264,7 +264,7 @@ struct GrowthGardenView: View {
 
         return VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("This Week")
+                Text(NSLocalizedString("This Week", comment: ""))
                     .font(NestTypography.guardianHeadline)
                     .foregroundColor(NestPalette.parentVoice)
 
@@ -285,19 +285,19 @@ struct GrowthGardenView: View {
             HStack(spacing: 10) {
                 statMiniCard(
                     value: String(format: "%.0f%%", weekly?.averageCompletion ?? 0),
-                    label: "Avg",
+                    label: NSLocalizedString("Avg", comment: ""),
                     color: NestPalette.honeyGlow,
                     icon: "chart.bar.fill"
                 )
                 statMiniCard(
                     value: "\(weekly?.streakDays ?? 0)d",
-                    label: "Streak",
+                    label: NSLocalizedString("Streak", comment: ""),
                     color: NestPalette.heartbeatStreak,
                     icon: "flame.fill"
                 )
                 statMiniCard(
                     value: "+\(weekly?.totalXP ?? 0)✦",
-                    label: "Earned",
+                    label: NSLocalizedString("Earned", comment: ""),
                     color: NestPalette.stardustReward,
                     icon: "star.fill"
                 )
@@ -305,7 +305,7 @@ struct GrowthGardenView: View {
 
             completionBarView(
                 percent: weekly?.averageCompletion ?? 0,
-                label: "Weekly average"
+                label: NSLocalizedString("Weekly average", comment: "")
             )
         }
     }
@@ -371,7 +371,7 @@ struct GrowthGardenView: View {
 
     private var activityDonutSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Activity Breakdown")
+            Text(NSLocalizedString("Activity Breakdown", comment: ""))
                 .font(NestTypography.guardianHeadline)
                 .foregroundColor(NestPalette.parentVoice)
 
@@ -400,7 +400,7 @@ struct GrowthGardenView: View {
                             .font(NestTypography.guardianHeadline)
                             .foregroundColor(NestPalette.parentVoice)
 
-                        Text("blocks")
+                        Text(NSLocalizedString("blocks", comment: ""))
                             .font(NestTypography.tinyFootprint)
                             .foregroundColor(NestPalette.drowsyHint)
                     }
@@ -445,7 +445,7 @@ struct GrowthGardenView: View {
         let gp = nestMemory.guardianProgress
 
         return VStack(alignment: .leading, spacing: 12) {
-            Text("Rhythm & Streaks")
+            Text(NSLocalizedString("Rhythm & Streaks", comment: ""))
                 .font(NestTypography.guardianHeadline)
                 .foregroundColor(NestPalette.parentVoice)
 
@@ -461,7 +461,7 @@ struct GrowthGardenView: View {
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)
 
-                    Text("Current\nStreak")
+                    Text(NSLocalizedString("Current\nStreak", comment: ""))
                         .font(NestTypography.tinyFootprint)
                         .foregroundColor(NestPalette.tenderWhisper)
                         .multilineTextAlignment(.center)
@@ -484,7 +484,7 @@ struct GrowthGardenView: View {
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)
 
-                    Text("Best\nStreak")
+                    Text(NSLocalizedString("Best\nStreak", comment: ""))
                         .font(NestTypography.tinyFootprint)
                         .foregroundColor(NestPalette.tenderWhisper)
                         .multilineTextAlignment(.center)
@@ -507,7 +507,7 @@ struct GrowthGardenView: View {
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)
 
-                    Text("Active\nDays")
+                    Text(NSLocalizedString("Active\nDays", comment: ""))
                         .font(NestTypography.tinyFootprint)
                         .foregroundColor(NestPalette.tenderWhisper)
                         .multilineTextAlignment(.center)
@@ -527,7 +527,7 @@ struct GrowthGardenView: View {
     private var badgesShowcase: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("Badges")
+                Text(NSLocalizedString("Badges", comment: ""))
                     .font(NestTypography.guardianHeadline)
                     .foregroundColor(NestPalette.parentVoice)
 
@@ -535,7 +535,7 @@ struct GrowthGardenView: View {
 
                 let earned = nestMemory.guardianProgress.earnedBadges.count
                 let total = NestBadgeCatalog.allBadges.count
-                Text("\(earned)/\(total)")
+                Text(String(format: NSLocalizedString("%lld/%lld", comment: ""), earned, total))
                     .font(NestTypography.whisperCaption)
                     .foregroundColor(NestPalette.tenderWhisper)
             }
@@ -593,7 +593,7 @@ struct GrowthGardenView: View {
 
     private var insightCardsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Insights")
+            Text(NSLocalizedString("Insights", comment: ""))
                 .font(NestTypography.guardianHeadline)
                 .foregroundColor(NestPalette.parentVoice)
 
@@ -602,7 +602,7 @@ struct GrowthGardenView: View {
                     Image(systemName: "lightbulb")
                         .foregroundColor(NestPalette.honeyGlow)
 
-                    Text("Complete a few days to unlock insights")
+                    Text(NSLocalizedString("Complete a few days to unlock insights", comment: ""))
                         .font(NestTypography.lullabyBody)
                         .foregroundColor(NestPalette.tenderWhisper)
                 }

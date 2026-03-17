@@ -12,7 +12,7 @@ struct ShareSummaryNestSheet: View {
             VStack(spacing: 0) {
                 // Header
                 HStack {
-                    Text("Share Summary")
+                    Text(NSLocalizedString("Share Summary", comment: ""))
                         .font(NestTypography.guardianHeadline)
                         .foregroundColor(NestPalette.parentVoice)
 
@@ -30,7 +30,7 @@ struct ShareSummaryNestSheet: View {
                 // Scrollable content
                 ScrollView(.vertical, showsIndicators: true) {
                     VStack(spacing: 12) {
-                        Text("🌙 \(NestAppName.displayName) — Weekly Snapshot")
+                        Text(String(format: NSLocalizedString("🌙 %@ — Weekly Snapshot", comment: ""), NestAppName.displayName))
                             .font(NestTypography.sproutLabel)
                             .foregroundColor(NestPalette.honeyGlow)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -58,7 +58,7 @@ struct ShareSummaryNestSheet: View {
                     ShareLink(item: brain.shareSummaryText) {
                         HStack {
                             Image(systemName: "square.and.arrow.up")
-                            Text("Share with Partner")
+                            Text(NSLocalizedString("Share with Partner", comment: ""))
                         }
                         .frame(maxWidth: .infinity)
                     }
@@ -70,7 +70,7 @@ struct ShareSummaryNestSheet: View {
                     } label: {
                         HStack {
                             Image(systemName: "doc.on.doc")
-                            Text("Copy to Clipboard")
+                            Text(NSLocalizedString("Copy to Clipboard", comment: ""))
                         }
                         .frame(maxWidth: .infinity)
                     }

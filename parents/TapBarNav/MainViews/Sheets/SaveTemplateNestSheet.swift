@@ -13,7 +13,7 @@ struct SaveTemplateNestSheet: View {
 
             VStack(spacing: 24) {
                 HStack {
-                    Text("Save as Template")
+                    Text(NSLocalizedString("Save as Template", comment: ""))
                         .font(NestTypography.guardianHeadline)
                         .foregroundColor(NestPalette.parentVoice)
 
@@ -26,18 +26,18 @@ struct SaveTemplateNestSheet: View {
                     }
                 }
 
-                Text("Save your current \(brain.totalCount) blocks as a reusable template")
+                Text(String(format: NSLocalizedString("Save your current %lld blocks as a reusable template", comment: ""), brain.totalCount))
                     .font(NestTypography.lullabyBody)
                     .foregroundColor(NestPalette.tenderWhisper)
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Template name")
+                    Text(NSLocalizedString("Template name", comment: ""))
                         .font(NestTypography.whisperCaption)
                         .foregroundColor(NestPalette.tenderWhisper)
 
                     TextField("", text: $templateTitle)
                         .placeholder(when: templateTitle.isEmpty) {
-                            Text("e.g. Weekday routine")
+                            Text(NSLocalizedString("e.g. Weekday routine", comment: ""))
                                 .foregroundColor(NestPalette.drowsyHint)
                         }
                         .font(NestTypography.lullabyBody)
@@ -59,7 +59,7 @@ struct SaveTemplateNestSheet: View {
                     _ = brain.createTemplateFromCurrentDay(title: name)
                     dismiss()
                 } label: {
-                    Text("Save Template")
+                    Text(NSLocalizedString("Save Template", comment: ""))
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(NestPrimaryButtonStyle())

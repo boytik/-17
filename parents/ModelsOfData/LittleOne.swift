@@ -47,23 +47,23 @@ enum AgeNestGroup: String, Codable, CaseIterable, Identifiable {
 
     var displayTitle: String {
         switch self {
-        case .hatchling0to3:  return "Hatchling (0–3 mo)"
-        case .nestling4to6:   return "Nestling (4–6 mo)"
-        case .crawler7to12:   return "Crawler (7–12 mo)"
-        case .toddler1to2:    return "Toddler (1–2 yr)"
-        case .explorer3to4:   return "Explorer (3–4 yr)"
-        case .adventurer5to7: return "Adventurer (5–7 yr)"
+        case .hatchling0to3:  return NSLocalizedString("Hatchling (0–3 mo)", comment: "")
+        case .nestling4to6:   return NSLocalizedString("Nestling (4–6 mo)", comment: "")
+        case .crawler7to12:   return NSLocalizedString("Crawler (7–12 mo)", comment: "")
+        case .toddler1to2:    return NSLocalizedString("Toddler (1–2 yr)", comment: "")
+        case .explorer3to4:   return NSLocalizedString("Explorer (3–4 yr)", comment: "")
+        case .adventurer5to7: return NSLocalizedString("Adventurer (5–7 yr)", comment: "")
         }
     }
 
     var shortLabel: String {
         switch self {
-        case .hatchling0to3:  return "0–3m"
-        case .nestling4to6:   return "4–6m"
-        case .crawler7to12:   return "7–12m"
-        case .toddler1to2:    return "1–2y"
-        case .explorer3to4:   return "3–4y"
-        case .adventurer5to7: return "5–7y"
+        case .hatchling0to3:  return NSLocalizedString("0–3m", comment: "")
+        case .nestling4to6:   return NSLocalizedString("4–6m", comment: "")
+        case .crawler7to12:   return NSLocalizedString("7–12m", comment: "")
+        case .toddler1to2:    return NSLocalizedString("1–2y", comment: "")
+        case .explorer3to4:   return NSLocalizedString("3–4y", comment: "")
+        case .adventurer5to7: return NSLocalizedString("5–7y", comment: "")
         }
     }
 
@@ -156,15 +156,15 @@ enum BlockKind: String, Codable, CaseIterable, Identifiable {
 
     var displayTitle: String {
         switch self {
-        case .dreamTime:     return "Sleep"
-        case .feedingNest:   return "Meal"
-        case .napTime:       return "Nap"
-        case .freshAirWalk:  return "Walk"
-        case .playGarden:    return "Play"
-        case .splashTime:    return "Bath"
-        case .readingTime:   return "Reading"
-        case .freeSpirit:    return "Free Time"
-        case .familyRitual:  return "Ritual"
+        case .dreamTime:     return NSLocalizedString("Sleep", comment: "")
+        case .feedingNest:   return NSLocalizedString("Meal", comment: "")
+        case .napTime:       return NSLocalizedString("Nap", comment: "")
+        case .freshAirWalk:  return NSLocalizedString("Walk", comment: "")
+        case .playGarden:    return NSLocalizedString("Play", comment: "")
+        case .splashTime:    return NSLocalizedString("Bath", comment: "")
+        case .readingTime:   return NSLocalizedString("Reading", comment: "")
+        case .freeSpirit:    return NSLocalizedString("Free Time", comment: "")
+        case .familyRitual:  return NSLocalizedString("Ritual", comment: "")
         }
     }
 
@@ -222,10 +222,10 @@ enum CompletionMark: String, Codable, CaseIterable {
 
     var displayLabel: String {
         switch self {
-        case .pending:  return "Upcoming"
-        case .done:     return "Done"
-        case .moved:    return "Moved"
-        case .skipped:  return "Skipped"
+        case .pending:  return NSLocalizedString("Upcoming", comment: "")
+        case .done:     return NSLocalizedString("Done", comment: "")
+        case .moved:    return NSLocalizedString("Moved", comment: "")
+        case .skipped:  return NSLocalizedString("Skipped", comment: "")
         }
     }
 
@@ -256,9 +256,9 @@ enum MoodStamp: String, Codable, CaseIterable {
 
     var label: String {
         switch self {
-        case .calm:     return "Calm"
-        case .neutral:  return "Neutral"
-        case .tough:    return "Tough"
+        case .calm:     return NSLocalizedString("Calm", comment: "")
+        case .neutral:  return NSLocalizedString("Neutral", comment: "")
+        case .tough:    return NSLocalizedString("Tough", comment: "")
         }
     }
 }
@@ -369,11 +369,11 @@ enum GuardianLevel: Int, Codable, CaseIterable {
 
     var displayTitle: String {
         switch self {
-        case .seedling:   return "Seedling"
-        case .sprout:     return "Sprout"
-        case .blossom:    return "Blossom"
-        case .guardian:    return "Guardian"
-        case .elderTree:  return "Elder Tree"
+        case .seedling:   return NSLocalizedString("Seedling", comment: "")
+        case .sprout:     return NSLocalizedString("Sprout", comment: "")
+        case .blossom:    return NSLocalizedString("Blossom", comment: "")
+        case .guardian:    return NSLocalizedString("Guardian", comment: "")
+        case .elderTree:  return NSLocalizedString("Elder Tree", comment: "")
         }
     }
 
@@ -530,17 +530,17 @@ enum ReminderStyle: String, Codable, CaseIterable {
 
     var displayTitle: String {
         switch self {
-        case .whisper:   return "Whisper"
-        case .balanced:  return "Balanced"
-        case .clockwork: return "Clockwork"
+        case .whisper:   return NSLocalizedString("Whisper", comment: "")
+        case .balanced:  return NSLocalizedString("Balanced", comment: "")
+        case .clockwork: return NSLocalizedString("Clockwork", comment: "")
         }
     }
 
     var subtitle: String {
         switch self {
-        case .whisper:   return "One gentle nudge, no repeats"
-        case .balanced:  return "Nudge + soft follow-up"
-        case .clockwork: return "Nudge + quick follow-up"
+        case .whisper:   return NSLocalizedString("One gentle nudge, no repeats", comment: "")
+        case .balanced:  return NSLocalizedString("Nudge + soft follow-up", comment: "")
+        case .clockwork: return NSLocalizedString("Nudge + quick follow-up", comment: "")
         }
     }
 
@@ -616,9 +616,9 @@ enum TemplateStyle: String, Codable, CaseIterable {
 
     var displayTitle: String {
         switch self {
-        case .calm:       return "Calm"
-        case .active:     return "Active"
-        case .structured: return "Structured"
+        case .calm:       return NSLocalizedString("Calm", comment: "")
+        case .active:     return NSLocalizedString("Active", comment: "")
+        case .structured: return NSLocalizedString("Structured", comment: "")
         }
     }
 

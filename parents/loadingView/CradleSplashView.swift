@@ -25,14 +25,16 @@ struct CradleSplashView: View {
     /// Called when loading is complete.
     var onNestReady: () -> Void
 
-    // Abstract loading phrases — calm and poetic
-    private let lullabyPhrases: [String] = [
-        "Warming up the nest…",
-        "Gathering stardust…",
-        "Preparing gentle rhythms…",
-        "Lighting the nightlight…",
-        "Almost cozy…"
-    ]
+    // Abstract loading phrases — calm and poetic (localized)
+    private var lullabyPhrases: [String] {
+        [
+            NSLocalizedString("Warming up the nest…", comment: ""),
+            NSLocalizedString("Gathering stardust…", comment: ""),
+            NSLocalizedString("Preparing gentle rhythms…", comment: ""),
+            NSLocalizedString("Lighting the nightlight…", comment: ""),
+            NSLocalizedString("Almost cozy…", comment: "")
+        ]
+    }
 
     var body: some View {
         ZStack {
@@ -205,7 +207,7 @@ struct CradleSplashView: View {
     private var bottomTagline: some View {
         VStack(spacing: 4) {
             if showSubtitle {
-                Text("Daily routine without stress")
+                Text(NSLocalizedString("Daily routine without stress", comment: ""))
                     .font(NestTypography.whisperCaption)
                     .foregroundColor(NestPalette.drowsyHint)
                     .transition(.opacity.combined(with: .move(edge: .bottom)))

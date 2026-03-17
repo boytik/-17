@@ -23,7 +23,7 @@ struct DocumentSplashScreenView: View {
                     .font(NestTypography.cradleTitle)
                     .foregroundColor(NestPalette.parentVoice)
 
-                Text("Warming up the nest…")
+                Text(NSLocalizedString("Warming up the nest…", comment: ""))
                     .font(NestTypography.lullabyBody)
                     .foregroundColor(NestPalette.tenderWhisper)
                     .padding(.top, 8)

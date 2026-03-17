@@ -66,7 +66,7 @@ struct BadgeDetailNestSheet: View {
                         return f
                     }()
 
-                    Text("Unlocked \(formatter.string(from: date))")
+                    Text(String(format: NSLocalizedString("Unlocked %@", comment: ""), formatter.string(from: date)))
                         .font(NestTypography.whisperCaption)
                         .foregroundColor(NestPalette.honeyGlow)
                         .padding(.horizontal, 16)
@@ -76,7 +76,7 @@ struct BadgeDetailNestSheet: View {
                                 .fill(NestPalette.honeyGlow.opacity(0.1))
                         )
                 } else {
-                    Text("🔒 Not yet unlocked")
+                    Text(NSLocalizedString("🔒 Not yet unlocked", comment: ""))
                         .font(NestTypography.whisperCaption)
                         .foregroundColor(NestPalette.drowsyHint)
                 }

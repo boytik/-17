@@ -87,13 +87,13 @@ struct FamilyNestView: View {
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
         }
-        .alert("Reset Everything?", isPresented: $showResetConfirmation) {
-            Button("Cancel", role: .cancel) {}
-            Button("Reset", role: .destructive) {
+        .alert(NSLocalizedString("Reset Everything?", comment: ""), isPresented: $showResetConfirmation) {
+            Button(NSLocalizedString("Cancel", comment: ""), role: .cancel) {}
+            Button(NSLocalizedString("Reset", comment: ""), role: .destructive) {
                 brain.resetAllData()
             }
         } message: {
-            Text("This will erase all profiles, routines, progress, and badges. This cannot be undone.")
+            Text(NSLocalizedString("This will erase all profiles, routines, progress, and badges. This cannot be undone.", comment: ""))
         }
         .onAppear {
             brain.attachMemory(nestMemory)
@@ -105,11 +105,11 @@ struct FamilyNestView: View {
     private var settingsHeader: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text("Family Nest")
+                Text(NSLocalizedString("Family Nest", comment: ""))
                     .font(NestTypography.cradleTitle)
                     .foregroundColor(NestPalette.parentVoice)
 
-                Text("Your space, your rules")
+                Text(NSLocalizedString("Your space, your rules", comment: ""))
                     .font(NestTypography.lullabyBody)
                     .foregroundColor(NestPalette.tenderWhisper)
             }
@@ -124,7 +124,7 @@ struct FamilyNestView: View {
                     Image(systemName: brain.isQuietMode ? "moon.fill" : "moon")
                         .font(.system(size: 14))
 
-                    Text(brain.isQuietMode ? "Quiet" : "Active")
+                    Text(brain.isQuietMode ? NSLocalizedString("Quiet", comment: "") : NSLocalizedString("Active", comment: ""))
                         .font(NestTypography.sproutLabel)
                 }
                 .foregroundColor(
@@ -155,7 +155,7 @@ struct FamilyNestView: View {
     private var parentAvatarSection: some View {
         VStack(spacing: 14) {
             HStack {
-                Text("Parent Avatar")
+                Text(NSLocalizedString("Parent Avatar", comment: ""))
                     .font(NestTypography.guardianHeadline)
                     .foregroundColor(NestPalette.parentVoice)
 
@@ -164,7 +164,7 @@ struct FamilyNestView: View {
                 Button {
                     showParentAvatarPicker = true
                 } label: {
-                    Text("Change")
+                    Text(NSLocalizedString("Change", comment: ""))
                         .font(NestTypography.lullabyBody)
                         .foregroundColor(NestPalette.honeyGlow)
                 }
@@ -198,11 +198,11 @@ struct FamilyNestView: View {
                             .foregroundColor(NestPalette.parentVoice)
                     }
 
-                    Text("\(gp.totalStardust) ✦ stardust collected")
+                    Text(String(format: NSLocalizedString("%lld ✦ stardust collected", comment: ""), gp.totalStardust))
                         .font(NestTypography.lullabyBody)
                         .foregroundColor(NestPalette.tenderWhisper)
 
-                    Text("\(gp.earnedBadges.count) of \(NestBadgeCatalog.allBadges.count) badges earned")
+                    Text(String(format: NSLocalizedString("%lld of %lld badges earned", comment: ""), gp.earnedBadges.count, NestBadgeCatalog.allBadges.count))
                         .font(NestTypography.lullabyBody)
                         .foregroundColor(NestPalette.drowsyHint)
                 }
@@ -218,7 +218,7 @@ struct FamilyNestView: View {
     private var childProfilesSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("Little Ones")
+                Text(NSLocalizedString("Little Ones", comment: ""))
                     .font(NestTypography.guardianHeadline)
                     .foregroundColor(NestPalette.parentVoice)
 
@@ -230,7 +230,7 @@ struct FamilyNestView: View {
                     HStack(spacing: 4) {
                         Image(systemName: "plus.circle.fill")
                             .font(.system(size: 14))
-                        Text("Add")
+                        Text(NSLocalizedString("Add", comment: ""))
                             .font(NestTypography.lullabyBody)
                     }
                     .foregroundColor(NestPalette.honeyGlow)
@@ -242,7 +242,7 @@ struct FamilyNestView: View {
                     Image(systemName: "person.badge.plus")
                         .foregroundColor(NestPalette.drowsyHint)
 
-                    Text("No profiles yet — add your first little one")
+                    Text(NSLocalizedString("No profiles yet — add your first little one", comment: ""))
                         .font(NestTypography.lullabyBody)
                         .foregroundColor(NestPalette.tenderWhisper)
                 }
@@ -281,12 +281,12 @@ struct FamilyNestView: View {
 
             VStack(alignment: .leading, spacing: 3) {
                 HStack(spacing: 6) {
-                    Text(profile.petName.isEmpty ? "Little One" : profile.petName)
+                    Text(profile.petName.isEmpty ? NSLocalizedString("Little One", comment: "") : profile.petName)
                         .font(NestTypography.sproutLabel)
                         .foregroundColor(NestPalette.parentVoice)
 
                     if isActive {
-                        Text("ACTIVE")
+                        Text(NSLocalizedString("ACTIVE", comment: ""))
                             .font(.system(size: 8, weight: .bold))
                             .foregroundColor(NestPalette.midnightNest)
                             .padding(.horizontal, 6)
@@ -310,7 +310,7 @@ struct FamilyNestView: View {
                     Button {
                         brain.switchToProfile(profile.id)
                     } label: {
-                        Text("Activate")
+                        Text(NSLocalizedString("Activate", comment: ""))
                             .font(NestTypography.lullabyBody)
                             .foregroundColor(NestPalette.honeyGlow)
                             .padding(.horizontal, 10)
@@ -339,7 +339,7 @@ struct FamilyNestView: View {
 
     private var reminderSettingsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Notification Style")
+            Text(NSLocalizedString("Notification Style", comment: ""))
                 .font(NestTypography.guardianHeadline)
                 .foregroundColor(NestPalette.parentVoice)
 
@@ -410,14 +410,14 @@ struct FamilyNestView: View {
 
     private var quietHoursSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Quiet Hours")
+            Text(NSLocalizedString("Quiet Hours", comment: ""))
                 .font(NestTypography.guardianHeadline)
                 .foregroundColor(NestPalette.parentVoice)
 
             HStack(spacing: 16) {
                 // From
                 VStack(spacing: 6) {
-                    Text("From")
+                    Text(NSLocalizedString("From", comment: ""))
                         .font(NestTypography.lullabyBody)
                         .foregroundColor(NestPalette.drowsyHint)
 
@@ -438,7 +438,7 @@ struct FamilyNestView: View {
 
                 // To
                 VStack(spacing: 6) {
-                    Text("To")
+                    Text(NSLocalizedString("To", comment: ""))
                         .font(NestTypography.lullabyBody)
                         .foregroundColor(NestPalette.drowsyHint)
 
@@ -457,9 +457,9 @@ struct FamilyNestView: View {
             // Quick presets — centered
             HStack(spacing: 10) {
                 Spacer(minLength: 0)
-                quietPresetChip(label: "9 PM – 7 AM", start: 1260, end: 420)
-                quietPresetChip(label: "10 PM – 6 AM", start: 1320, end: 360)
-                quietPresetChip(label: "8 PM – 8 AM", start: 1200, end: 480)
+                quietPresetChip(label: NSLocalizedString("9 PM – 7 AM", comment: ""), start: 1260, end: 420)
+                quietPresetChip(label: NSLocalizedString("10 PM – 6 AM", comment: ""), start: 1320, end: 360)
+                quietPresetChip(label: NSLocalizedString("8 PM – 8 AM", comment: ""), start: 1200, end: 480)
                 Spacer(minLength: 0)
             }
         }
@@ -492,7 +492,7 @@ struct FamilyNestView: View {
 
     private var funActionsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("More")
+            Text(NSLocalizedString("More", comment: ""))
                 .font(NestTypography.guardianHeadline)
                 .foregroundColor(NestPalette.parentVoice)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -500,8 +500,8 @@ struct FamilyNestView: View {
             // Lifetime stats
             funActionRow(
                 icon: "chart.pie.fill",
-                title: "Lifetime Statistics",
-                subtitle: "Your complete parenting journey in numbers",
+                title: NSLocalizedString("Lifetime Statistics", comment: ""),
+                subtitle: NSLocalizedString("Your complete parenting journey in numbers", comment: ""),
                 color: NestPalette.honeyGlow
             ) {
                 showLifetimeStats = true
@@ -510,8 +510,8 @@ struct FamilyNestView: View {
             // Share summary
             funActionRow(
                 icon: "square.and.arrow.up",
-                title: "Share Summary",
-                subtitle: "Send a snapshot of your week to a partner",
+                title: NSLocalizedString("Share Summary", comment: ""),
+                subtitle: NSLocalizedString("Send a snapshot of your week to a partner", comment: ""),
                 color: NestPalette.driftingCloud
             ) {
                 showShareSheet = true
@@ -576,11 +576,11 @@ struct FamilyNestView: View {
                         .foregroundColor(NestPalette.gentleBlush)
 
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("Reset All Data")
+                        Text(NSLocalizedString("Reset All Data", comment: ""))
                             .font(NestTypography.sproutLabel)
                             .foregroundColor(NestPalette.gentleBlush)
 
-                        Text("Erase everything and start fresh")
+                        Text(NSLocalizedString("Erase everything and start fresh", comment: ""))
                             .font(NestTypography.lullabyBody)
                             .foregroundColor(NestPalette.drowsyHint)
                     }
@@ -600,11 +600,11 @@ struct FamilyNestView: View {
                 .font(NestTypography.sproutLabel)
                 .foregroundColor(NestPalette.drowsyHint)
 
-            Text("Daily routine without stress")
+            Text(NSLocalizedString("Daily routine without stress", comment: ""))
                 .font(NestTypography.lullabyBody)
                 .foregroundColor(NestPalette.drowsyHint)
 
-            Text("v1.0 • Made with 💛")
+            Text(NSLocalizedString("v1.0 • Made with 💛", comment: ""))
                 .font(NestTypography.lullabyBody)
                 .foregroundColor(NestPalette.dreamlineDivider)
         }
@@ -632,7 +632,7 @@ struct ParentEmojiPickerSheet: View {
 
             VStack(spacing: 20) {
                 HStack {
-                    Text("Choose Your Avatar")
+                    Text(NSLocalizedString("Choose Your Avatar", comment: ""))
                         .font(NestTypography.guardianHeadline)
                         .foregroundColor(NestPalette.parentVoice)
 
@@ -683,7 +683,7 @@ struct ParentEmojiPickerSheet: View {
                 }
 
                 Button { dismiss() } label: {
-                    Text("Done")
+                    Text(NSLocalizedString("Done", comment: ""))
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(NestPrimaryButtonStyle())
@@ -715,7 +715,7 @@ struct AddChildNestSheet: View {
             ScrollView {
                 VStack(spacing: 20) {
                     HStack {
-                        Text("New Little One")
+                        Text(NSLocalizedString("New Little One", comment: ""))
                             .font(NestTypography.guardianHeadline)
                             .foregroundColor(NestPalette.parentVoice)
 
@@ -760,7 +760,7 @@ struct AddChildNestSheet: View {
                     // Name field
                     TextField("", text: $name)
                         .placeholder(when: name.isEmpty) {
-                            Text("Name (optional)")
+                            Text(NSLocalizedString("Name (optional)", comment: ""))
                                 .foregroundColor(NestPalette.drowsyHint)
                         }
                         .font(NestTypography.lullabyBody)
@@ -778,7 +778,7 @@ struct AddChildNestSheet: View {
 
                     // Age group
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Age Group")
+                        Text(NSLocalizedString("Age Group", comment: ""))
                             .font(NestTypography.sproutLabel)
                             .foregroundColor(NestPalette.tenderWhisper)
 
@@ -818,7 +818,7 @@ struct AddChildNestSheet: View {
                         brain.addChild(name: name, emoji: emoji, ageGroup: ageGroup)
                         dismiss()
                     } label: {
-                        Text("Add to Family")
+                        Text(NSLocalizedString("Add to Family", comment: ""))
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(NestPrimaryButtonStyle())
@@ -851,7 +851,7 @@ struct EditChildNestSheet: View {
             ScrollView {
                 VStack(spacing: 20) {
                     HStack {
-                        Text("Edit Profile")
+                        Text(NSLocalizedString("Edit Profile", comment: ""))
                             .font(NestTypography.guardianHeadline)
                             .foregroundColor(NestPalette.parentVoice)
 
@@ -894,7 +894,7 @@ struct EditChildNestSheet: View {
 
                     TextField("", text: $name)
                         .placeholder(when: name.isEmpty) {
-                            Text("Name")
+                            Text(NSLocalizedString("Name", comment: ""))
                                 .foregroundColor(NestPalette.drowsyHint)
                         }
                         .font(NestTypography.lullabyBody)
@@ -951,7 +951,7 @@ struct EditChildNestSheet: View {
                             )
                             dismiss()
                         } label: {
-                            Text("Save Changes")
+                            Text(NSLocalizedString("Save Changes", comment: ""))
                                 .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(NestPrimaryButtonStyle())
@@ -963,7 +963,7 @@ struct EditChildNestSheet: View {
                     } label: {
                         HStack {
                             Image(systemName: "trash")
-                            Text("Remove Profile")
+                            Text(NSLocalizedString("Remove Profile", comment: ""))
                         }
                         .font(NestTypography.lullabyBody)
                         .foregroundColor(NestPalette.gentleBlush)
@@ -996,7 +996,7 @@ struct LifetimeStatsNestSheet: View {
             ScrollView {
                 VStack(spacing: 24) {
                     HStack {
-                        Text("Lifetime Statistics")
+                        Text(NSLocalizedString("Lifetime Statistics", comment: ""))
                             .font(NestTypography.cradleTitle)
                             .foregroundColor(NestPalette.parentVoice)
 
@@ -1015,31 +1015,31 @@ struct LifetimeStatsNestSheet: View {
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 14) {
                         lifetimeStatBox(
                             value: "\(gp.totalStardust)",
-                            label: "Total Stardust",
+                            label: NSLocalizedString("Total Stardust", comment: ""),
                             emoji: "✦",
                             color: NestPalette.stardustReward
                         )
                         lifetimeStatBox(
                             value: "\(gp.completedDaysCount)",
-                            label: "Active Days",
+                            label: NSLocalizedString("Active Days", comment: ""),
                             emoji: "📅",
                             color: NestPalette.honeyGlow
                         )
                         lifetimeStatBox(
                             value: "\(gp.longestStreak)",
-                            label: "Best Streak",
+                            label: NSLocalizedString("Best Streak", comment: ""),
                             emoji: "⭐️",
                             color: NestPalette.sunriseKiss
                         )
                         lifetimeStatBox(
                             value: "\(gp.earnedBadges.count)/\(NestBadgeCatalog.allBadges.count)",
-                            label: "Badges Earned",
+                            label: NSLocalizedString("Badges Earned", comment: ""),
                             emoji: "🏅",
                             color: NestPalette.crownShimmer
                         )
                         lifetimeStatBox(
                             value: "\(nestMemory.profiles.count)",
-                            label: "Profiles",
+                            label: NSLocalizedString("Profiles", comment: ""),
                             emoji: "👶",
                             color: NestPalette.calmBreath
                         )
@@ -1054,7 +1054,7 @@ struct LifetimeStatsNestSheet: View {
                     // Badges earned list
                     if !gp.earnedBadges.isEmpty {
                         VStack(alignment: .leading, spacing: 10) {
-                            Text("Earned Badges")
+                            Text(NSLocalizedString("Earned Badges", comment: ""))
                                 .font(NestTypography.guardianHeadline)
                                 .foregroundColor(NestPalette.parentVoice)
 

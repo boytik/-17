@@ -81,12 +81,12 @@ struct LullabyOnboardingView: View {
             .nestFadeIn(delay: 0.2)
             .padding(.bottom, 40)
 
-            Text("Welcome to \(NestAppName.displayName)")
+            Text(String(format: NSLocalizedString("Welcome to %@", comment: ""), NestAppName.displayName))
                 .font(NestTypography.cradleTitle)
                 .foregroundColor(NestPalette.parentVoice)
                 .nestFadeIn(delay: 0.4)
 
-            Text("Daily routine, without the stress")
+            Text(NSLocalizedString("Daily routine, without the stress", comment: ""))
                 .font(NestTypography.lullabyBody)
                 .foregroundColor(NestPalette.tenderWhisper)
                 .padding(.top, 8)
@@ -96,20 +96,20 @@ struct LullabyOnboardingView: View {
             VStack(alignment: .leading, spacing: 16) {
                 welcomeFeatureRow(
                     icon: "clock.fill",
-                    title: "Flexible Timeline",
-                    subtitle: "Drag, move, adjust — one tap",
+                    title: NSLocalizedString("Flexible Timeline", comment: ""),
+                    subtitle: NSLocalizedString("Drag, move, adjust — one tap", comment: ""),
                     delay: 0.8
                 )
                 welcomeFeatureRow(
                     icon: "bell.badge",
-                    title: "Gentle Reminders",
-                    subtitle: "Calm nudges, not alarms",
+                    title: NSLocalizedString("Gentle Reminders", comment: ""),
+                    subtitle: NSLocalizedString("Calm nudges, not alarms", comment: ""),
                     delay: 1.0
                 )
                 welcomeFeatureRow(
                     icon: "star.fill",
-                    title: "Grow Together",
-                    subtitle: "Earn stardust for every block",
+                    title: NSLocalizedString("Grow Together", comment: ""),
+                    subtitle: NSLocalizedString("Earn stardust for every block", comment: ""),
                     delay: 1.2
                 )
             }
@@ -122,7 +122,7 @@ struct LullabyOnboardingView: View {
             Button {
                 brain.stepForward()
             } label: {
-                Text("Begin Your Journey")
+                Text(NSLocalizedString("Begin Your Journey", comment: ""))
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(NestPrimaryButtonStyle())
@@ -169,13 +169,13 @@ struct LullabyOnboardingView: View {
     private var profileNestPage: some View {
         ScrollView {
             VStack(spacing: 0) {
-                Text("Your Little One")
+                Text(NSLocalizedString("Your Little One", comment: ""))
                     .font(NestTypography.cradleTitle)
                     .foregroundColor(NestPalette.parentVoice)
                     .padding(.top, 40)
                     .nestFadeIn(delay: 0.2)
 
-                Text("We'll tailor the day just right")
+                Text(NSLocalizedString("We'll tailor the day just right", comment: ""))
                     .font(NestTypography.lullabyBody)
                     .foregroundColor(NestPalette.tenderWhisper)
                     .padding(.top, 6)
@@ -188,13 +188,13 @@ struct LullabyOnboardingView: View {
 
                 // Name field
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Name (optional)")
+                    Text(NSLocalizedString("Name (optional)", comment: ""))
                         .font(NestTypography.whisperCaption)
                         .foregroundColor(NestPalette.tenderWhisper)
 
                     TextField("", text: $brain.childNameDraft)
                         .placeholder(when: brain.childNameDraft.isEmpty) {
-                            Text("Little star's name")
+                            Text(NSLocalizedString("Little star's name", comment: ""))
                                 .foregroundColor(NestPalette.drowsyHint)
                         }
                         .font(NestTypography.lullabyBody)
@@ -216,7 +216,7 @@ struct LullabyOnboardingView: View {
 
                 // Age group picker
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("Age Group")
+                    Text(NSLocalizedString("Age Group", comment: ""))
                         .font(NestTypography.whisperCaption)
                         .foregroundColor(NestPalette.tenderWhisper)
                         .padding(.horizontal, 32)
@@ -234,7 +234,7 @@ struct LullabyOnboardingView: View {
                 .nestFadeIn(delay: 0.6)
 
                 // Hint
-                Text("You can always change this later")
+                Text(NSLocalizedString("You can always change this later", comment: ""))
                     .font(NestTypography.whisperCaption)
                     .foregroundColor(NestPalette.drowsyHint)
                     .padding(.top, 20)
@@ -244,7 +244,7 @@ struct LullabyOnboardingView: View {
                 Button {
                     brain.stepForward()
                 } label: {
-                    Text("Next")
+                    Text(NSLocalizedString("Next", comment: ""))
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(NestPrimaryButtonStyle())
@@ -347,13 +347,13 @@ struct LullabyOnboardingView: View {
 
     private var templateNestPage: some View {
         VStack(spacing: 0) {
-            Text("How to Start?")
+            Text(NSLocalizedString("How to Start?", comment: ""))
                 .font(NestTypography.cradleTitle)
                 .foregroundColor(NestPalette.parentVoice)
                 .padding(.top, 40)
                 .nestFadeIn(delay: 0.2)
 
-            Text("Empty day or use a template — you can always add blocks or apply templates later")
+            Text(NSLocalizedString("Empty day or use a template — you can always add blocks or apply templates later", comment: ""))
                 .font(NestTypography.lullabyBody)
                 .foregroundColor(NestPalette.tenderWhisper)
                 .padding(.top, 6)
@@ -366,7 +366,7 @@ struct LullabyOnboardingView: View {
                     templateEmptyCard
                         .nestFadeIn(delay: 0.35)
 
-                    Text("Or use a template")
+                    Text(NSLocalizedString("Or use a template", comment: ""))
                         .font(NestTypography.whisperCaption)
                         .foregroundColor(NestPalette.drowsyHint)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -390,7 +390,7 @@ struct LullabyOnboardingView: View {
             Button {
                 brain.stepForward()
             } label: {
-                Text(brain.selectedTemplateStyle == nil ? "Start with Empty Day" : "Apply Template")
+                Text(brain.selectedTemplateStyle == nil ? NSLocalizedString("Start with Empty Day", comment: "") : NSLocalizedString("Apply Template", comment: ""))
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(NestPrimaryButtonStyle())
@@ -418,10 +418,10 @@ struct LullabyOnboardingView: View {
                     )
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Start with empty day")
+                    Text(NSLocalizedString("Start with empty day", comment: ""))
                         .font(NestTypography.sproutLabel)
                         .foregroundColor(NestPalette.parentVoice)
-                    Text("Add blocks yourself or apply a template later")
+                    Text(NSLocalizedString("Add blocks yourself or apply a template later", comment: ""))
                         .font(NestTypography.whisperCaption)
                         .foregroundColor(NestPalette.tenderWhisper)
                         .lineLimit(2)
@@ -508,15 +508,15 @@ struct LullabyOnboardingView: View {
 
     private func templateSubtitle(for style: TemplateStyle) -> String {
         switch style {
-        case .calm:       return "Longer naps, gentle flow, minimal transitions"
-        case .active:     return "More outdoor time, engaging play sessions"
-        case .structured: return "Consistent timing, clear blocks, routines"
+        case .calm:       return NSLocalizedString("Longer naps, gentle flow, minimal transitions", comment: "")
+        case .active:     return NSLocalizedString("More outdoor time, engaging play sessions", comment: "")
+        case .structured: return NSLocalizedString("Consistent timing, clear blocks, routines", comment: "")
         }
     }
 
     private var templatePreviewStrip: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Preview")
+            Text(NSLocalizedString("Preview", comment: ""))
                 .font(NestTypography.whisperCaption)
                 .foregroundColor(NestPalette.drowsyHint)
 
@@ -565,12 +565,12 @@ struct LullabyOnboardingView: View {
             .nestFadeIn(delay: 0.2)
             .padding(.bottom, 28)
 
-            Text("Notification Style")
+            Text(NSLocalizedString("Notification Style", comment: ""))
                 .font(NestTypography.cradleTitle)
                 .foregroundColor(NestPalette.parentVoice)
                 .nestFadeIn(delay: 0.3)
 
-            Text("How should we nudge you?")
+            Text(NSLocalizedString("How should we nudge you?", comment: ""))
                 .font(NestTypography.lullabyBody)
                 .foregroundColor(NestPalette.tenderWhisper)
                 .padding(.top, 6)
@@ -586,7 +586,7 @@ struct LullabyOnboardingView: View {
 
             Spacer()
 
-            Text("Adjustable anytime in Settings")
+            Text(NSLocalizedString("Adjustable anytime in Settings", comment: ""))
                 .font(NestTypography.whisperCaption)
                 .foregroundColor(NestPalette.drowsyHint)
                 .padding(.bottom, 12)
@@ -596,7 +596,7 @@ struct LullabyOnboardingView: View {
                     brain.stepForward()
                 }
             } label: {
-                Text("Almost There")
+                Text(NSLocalizedString("Almost There", comment: ""))
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(NestPrimaryButtonStyle())
@@ -691,12 +691,12 @@ struct LullabyOnboardingView: View {
             }
             .padding(.bottom, 32)
 
-            Text("Your Nest is Ready!")
+            Text(NSLocalizedString("Your Nest is Ready!", comment: ""))
                 .font(NestTypography.cradleTitle)
                 .foregroundColor(NestPalette.parentVoice)
                 .nestFadeIn(delay: 0.3)
 
-            Text("The day is set up for \(brain.childDisplayName)")
+            Text(String(format: NSLocalizedString("The day is set up for %@", comment: ""), brain.childDisplayName))
                 .font(NestTypography.lullabyBody)
                 .foregroundColor(NestPalette.tenderWhisper)
                 .padding(.top, 6)
@@ -704,9 +704,9 @@ struct LullabyOnboardingView: View {
 
             // Quick tips
             VStack(alignment: .leading, spacing: 14) {
-                quickTipRow(icon: "hand.tap.fill", text: "Tap any block to mark it done", delay: 0.7)
-                quickTipRow(icon: "arrow.up.arrow.down", text: "Drag blocks to rearrange", delay: 0.9)
-                quickTipRow(icon: "star.fill", text: "Earn stardust for each completion", delay: 1.1)
+                quickTipRow(icon: "hand.tap.fill", text: NSLocalizedString("Tap any block to mark it done", comment: ""), delay: 0.7)
+                quickTipRow(icon: "arrow.up.arrow.down", text: NSLocalizedString("Drag blocks to rearrange", comment: ""), delay: 0.9)
+                quickTipRow(icon: "star.fill", text: NSLocalizedString("Earn stardust for each completion", comment: ""), delay: 1.1)
             }
             .padding(.horizontal, 36)
             .padding(.top, 32)
@@ -716,7 +716,7 @@ struct LullabyOnboardingView: View {
             Button {
                 brain.finishOnboarding()
             } label: {
-                Text("Let's Go!")
+                Text(NSLocalizedString("Let's Go!", comment: ""))
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(NestPrimaryButtonStyle())
@@ -728,7 +728,7 @@ struct LullabyOnboardingView: View {
             Button {
                 brain.stepBack()
             } label: {
-                Text("Go Back")
+                Text(NSLocalizedString("Go Back", comment: ""))
             }
             .buttonStyle(NestGhostButtonStyle())
             .padding(.bottom, 40)

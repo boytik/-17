@@ -78,13 +78,13 @@ struct CradleDayView: View {
             brain.attachMemory(nestMemory)
             brain.loadToday()
         }
-        .alert("Overwrite Tomorrow?", isPresented: $showDuplicateConfirm) {
-            Button("Cancel", role: .cancel) { }
-            Button("Overwrite", role: .destructive) {
+        .alert(NSLocalizedString("Overwrite Tomorrow?", comment: ""), isPresented: $showDuplicateConfirm) {
+            Button(NSLocalizedString("Cancel", comment: ""), role: .cancel) { }
+            Button(NSLocalizedString("Overwrite", comment: ""), role: .destructive) {
                 brain.duplicateToTomorrow()
             }
         } message: {
-            Text("Tomorrow already has a plan. Copying will replace it.")
+            Text(NSLocalizedString("Tomorrow already has a plan. Copying will replace it.", comment: ""))
         }
     }
 
@@ -113,7 +113,7 @@ struct CradleDayView: View {
                             NestHaptic.selection()
                             brain.loadToday()
                         } label: {
-                            Text("Today")
+                            Text(NSLocalizedString("Today", comment: ""))
                                 .font(NestTypography.tinyFootprint)
                                 .foregroundColor(NestPalette.honeyGlow)
                                 .padding(.horizontal, 8)
@@ -213,7 +213,7 @@ struct CradleDayView: View {
                 Text(gp.guardianLevel.emoji)
                     .font(.system(size: 16))
 
-                Text("Lv.\(gp.guardianLevel.rawValue)")
+                Text(String(format: NSLocalizedString("Lv.%lld", comment: ""), Int64(gp.guardianLevel.rawValue)))
                     .font(NestTypography.tinyFootprint)
                     .foregroundColor(NestPalette.honeyGlow)
             }
@@ -289,7 +289,7 @@ struct CradleDayView: View {
             }
 
             VStack(alignment: .leading, spacing: 2) {
-                Text("\(brain.doneCount) of \(brain.totalCount) blocks done")
+                Text(String(format: NSLocalizedString("%lld of %lld blocks done", comment: ""), brain.doneCount, brain.totalCount))
                     .font(NestTypography.sproutLabel)
                     .foregroundColor(NestPalette.parentVoice)
 
@@ -306,7 +306,7 @@ struct CradleDayView: View {
                     .font(NestTypography.sproutLabel)
                     .foregroundColor(NestPalette.stardustReward)
 
-                Text("stardust")
+                Text(NSLocalizedString("stardust", comment: ""))
                     .font(NestTypography.tinyFootprint)
                     .foregroundColor(NestPalette.drowsyHint)
             }
@@ -335,12 +335,12 @@ struct CradleDayView: View {
                     .foregroundColor(NestPalette.honeyGlow.opacity(0.8))
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Day Note")
+                    Text(NSLocalizedString("Day Note", comment: ""))
                         .font(NestTypography.sproutLabel)
                         .foregroundColor(NestPalette.parentVoice)
 
                     if brain.dayNote.isEmpty {
-                        Text("Tap to add a note for this day")
+                        Text(NSLocalizedString("Tap to add a note for this day", comment: ""))
                             .font(NestTypography.whisperCaption)
                             .foregroundColor(NestPalette.drowsyHint)
                             .italic()
@@ -403,7 +403,7 @@ struct CradleDayView: View {
                 HStack(spacing: 8) {
                     Image(systemName: "plus.circle.fill")
                         .font(.system(size: 18))
-                    Text("Add Block")
+                    Text(NSLocalizedString("Add Block", comment: ""))
                         .font(NestTypography.sproutLabel)
                 }
                 .foregroundColor(NestPalette.honeyGlow)
@@ -455,11 +455,11 @@ struct CradleDayView: View {
                 .font(.system(size: 64))
                 .nestFloating(amplitude: 5, duration: 3)
 
-            Text("The nest is empty")
+            Text(NSLocalizedString("The nest is empty", comment: ""))
                 .font(NestTypography.guardianHeadline)
                 .foregroundColor(NestPalette.parentVoice)
 
-            Text("Add your first block to start the day")
+            Text(NSLocalizedString("Add your first block to start the day", comment: ""))
                 .font(NestTypography.lullabyBody)
                 .foregroundColor(NestPalette.tenderWhisper)
                 .multilineTextAlignment(.center)
@@ -467,7 +467,7 @@ struct CradleDayView: View {
             Button {
                 showAddBlockNest = true
             } label: {
-                Text("Add First Block")
+                Text(NSLocalizedString("Add First Block", comment: ""))
             }
             .buttonStyle(NestPrimaryButtonStyle())
         }
@@ -701,7 +701,7 @@ struct AddBlockNestSheet: View {
                         HStack(spacing: 8) {
                             Image(systemName: "exclamationmark.triangle.fill")
                                 .foregroundColor(NestPalette.gentleBlush)
-                            Text("This time overlaps with existing blocks")
+                            Text(NSLocalizedString("This time overlaps with existing blocks", comment: ""))
                                 .font(NestTypography.lullabyBody)
                                 .foregroundColor(NestPalette.gentleBlush)
                         }
@@ -728,7 +728,7 @@ struct AddBlockNestSheet: View {
                             dismiss()
                         }
                     } label: {
-                        Text("Add to Day")
+                        Text(NSLocalizedString("Add to Day", comment: ""))
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(NestPrimaryButtonStyle())
@@ -745,7 +745,7 @@ struct AddBlockNestSheet: View {
 
     private var headerBar: some View {
         HStack {
-            Text("New Block")
+            Text(NSLocalizedString("New Block", comment: ""))
                 .font(NestTypography.guardianHeadline)
                 .foregroundColor(NestPalette.parentVoice)
 
@@ -761,13 +761,13 @@ struct AddBlockNestSheet: View {
 
     private var blockNameSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Block name (optional)")
+            Text(NSLocalizedString("Block name (optional)", comment: ""))
                 .font(NestTypography.sproutLabel)
                 .foregroundColor(NestPalette.tenderWhisper)
 
             TextField("", text: $customTitleText)
                 .placeholder(when: customTitleText.isEmpty) {
-                    Text("e.g. Morning nap, Lunch")
+                    Text(NSLocalizedString("e.g. Morning nap, Lunch", comment: ""))
                         .foregroundColor(NestPalette.drowsyHint)
                 }
                 .font(NestTypography.lullabyBody)
@@ -834,7 +834,7 @@ struct AddBlockNestSheet: View {
 
     private var timePickerSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Start Time")
+            Text(NSLocalizedString("Start Time", comment: ""))
                 .font(NestTypography.sproutLabel)
                 .foregroundColor(NestPalette.tenderWhisper)
 
@@ -871,7 +871,7 @@ struct AddBlockNestSheet: View {
 
     private var durationSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Duration: \(durationMinutes) min")
+            Text(String(format: NSLocalizedString("Duration: %lld min", comment: ""), durationMinutes))
                 .font(NestTypography.sproutLabel)
                 .foregroundColor(NestPalette.tenderWhisper)
 
@@ -946,7 +946,7 @@ struct BlockDetailNestSheet: View {
 
                     // Editable block name
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Block name")
+                        Text(NSLocalizedString("Block name", comment: ""))
                             .font(NestTypography.whisperCaption)
                             .foregroundColor(NestPalette.tenderWhisper)
 
@@ -973,13 +973,13 @@ struct BlockDetailNestSheet: View {
 
                     // XP reward preview
                     HStack {
-                        Text("Reward: +\(block.blockKind.sproutXP) ✦ stardust")
+                        Text(String(format: NSLocalizedString("Reward: +%lld ✦ stardust", comment: ""), block.blockKind.sproutXP))
                             .font(NestTypography.whisperCaption)
                             .foregroundColor(NestPalette.stardustReward)
 
                         Spacer()
 
-                        Text("Status: \(block.completionMark.displayLabel)")
+                        Text(String(format: NSLocalizedString("Status: %@", comment: ""), block.completionMark.displayLabel))
                             .font(NestTypography.whisperCaption)
                             .foregroundColor(NestPalette.tenderWhisper)
                     }
@@ -992,20 +992,20 @@ struct BlockDetailNestSheet: View {
                     Divider().overlay(NestPalette.dreamlineDivider)
 
                     // Mark actions
-                    Text("Mark As")
+                    Text(NSLocalizedString("Mark As", comment: ""))
                         .font(NestTypography.sproutLabel)
                         .foregroundColor(NestPalette.parentVoice)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
                     HStack(spacing: 12) {
-                        markButton(mark: .done, icon: "checkmark.circle.fill", color: NestPalette.calmBreath, label: "Done")
-                        markButton(mark: .moved, icon: "arrow.right.circle.fill", color: NestPalette.driftingCloud, label: "Moved")
-                        markButton(mark: .skipped, icon: "xmark.circle", color: NestPalette.gentleBlush, label: "Skip")
+                        markButton(mark: .done, icon: "checkmark.circle.fill", color: NestPalette.calmBreath, label: NSLocalizedString("Done", comment: ""))
+                        markButton(mark: .moved, icon: "arrow.right.circle.fill", color: NestPalette.driftingCloud, label: NSLocalizedString("Moved", comment: ""))
+                        markButton(mark: .skipped, icon: "xmark.circle", color: NestPalette.gentleBlush, label: NSLocalizedString("Skip", comment: ""))
                     }
 
                     // Mood picker
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("How did it go?")
+                        Text(NSLocalizedString("How did it go?", comment: ""))
                             .font(NestTypography.sproutLabel)
                             .foregroundColor(NestPalette.parentVoice)
 
@@ -1046,13 +1046,13 @@ struct BlockDetailNestSheet: View {
 
                     // Note
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Quick Note")
+                        Text(NSLocalizedString("Quick Note", comment: ""))
                             .font(NestTypography.whisperCaption)
                             .foregroundColor(NestPalette.tenderWhisper)
 
                         TextField("", text: $noteText)
                             .placeholder(when: noteText.isEmpty) {
-                                Text("Optional — what happened?")
+                                Text(NSLocalizedString("Optional — what happened?", comment: ""))
                                     .foregroundColor(NestPalette.drowsyHint)
                             }
                             .font(NestTypography.lullabyBody)
@@ -1075,7 +1075,7 @@ struct BlockDetailNestSheet: View {
                     } label: {
                         HStack {
                             Image(systemName: "trash")
-                            Text("Remove Block")
+                            Text(NSLocalizedString("Remove Block", comment: ""))
                         }
                         .font(NestTypography.whisperCaption)
                         .foregroundColor(NestPalette.gentleBlush)

@@ -9,7 +9,7 @@ import SwiftUI
 
 /// App display name — used everywhere in UI.
 enum NestAppName {
-    static let displayName = "Little Days: Quiet Mind"
+    static var displayName: String { NSLocalizedString("Little Days: Quiet Mind", comment: "") }
 }
 
 enum GardenPeriod: String, CaseIterable {
@@ -18,8 +18,8 @@ enum GardenPeriod: String, CaseIterable {
 
     var displayLabel: String {
         switch self {
-        case .today: return "Today"
-        case .week:  return "This Week"
+        case .today: return NSLocalizedString("Today", comment: "")
+        case .week:  return NSLocalizedString("This Week", comment: "")
         }
     }
 }

@@ -15,7 +15,7 @@ struct ReminderPermissionButton: View {
                 HStack(spacing: 8) {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundColor(NestPalette.calmBreath)
-                    Text("Notifications enabled")
+                    Text(NSLocalizedString("Notifications enabled", comment: ""))
                         .font(NestTypography.lullabyBody)
                         .foregroundColor(NestPalette.tenderWhisper)
                 }
@@ -29,7 +29,7 @@ struct ReminderPermissionButton: View {
                 } label: {
                     HStack(spacing: 8) {
                         Image(systemName: "bell.slash")
-                        Text("Notifications off — tap to open Settings")
+                        Text(NSLocalizedString("Notifications off — tap to open Settings", comment: ""))
                     }
                     .font(NestTypography.lullabyBody)
                     .foregroundColor(NestPalette.gentleBlush)
@@ -46,7 +46,7 @@ struct ReminderPermissionButton: View {
                 } label: {
                     HStack(spacing: 8) {
                         Image(systemName: "bell.badge")
-                        Text("Enable notifications for reminders")
+                        Text(NSLocalizedString("Enable notifications for reminders", comment: ""))
                     }
                     .font(NestTypography.lullabyBody)
                     .foregroundColor(NestPalette.honeyGlow)

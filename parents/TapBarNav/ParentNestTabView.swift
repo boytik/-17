@@ -137,9 +137,9 @@ enum NestTab: Int, CaseIterable, Hashable {
 
     var displayLabel: String {
         switch self {
-        case .cradleDay:    return "Day"
-        case .growthGarden: return "Growth"
-        case .familyNest:   return "Nest"
+        case .cradleDay:    return NSLocalizedString("Day", comment: "")
+        case .growthGarden: return NSLocalizedString("Growth", comment: "")
+        case .familyNest:   return NSLocalizedString("Nest", comment: "")
         }
     }
 

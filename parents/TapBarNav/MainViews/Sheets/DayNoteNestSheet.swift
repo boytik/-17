@@ -21,7 +21,7 @@ struct DayNoteNestSheet: View {
                 ScrollView {
                     VStack(spacing: 20) {
                         HStack {
-                            Text("Day Note")
+                            Text(NSLocalizedString("Day Note", comment: ""))
                                 .font(NestTypography.guardianHeadline)
                                 .foregroundColor(NestPalette.parentVoice)
 
@@ -54,7 +54,7 @@ struct DayNoteNestSheet: View {
                             brain.saveDayNote(noteText)
                             dismiss()
                         } label: {
-                            Text("Save Note")
+                            Text(NSLocalizedString("Save Note", comment: ""))
                                 .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(NestPrimaryButtonStyle())

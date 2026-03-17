@@ -22,7 +22,7 @@ struct ApplyTemplateNestSheet: View {
 
             VStack(spacing: 0) {
                 HStack {
-                    Text("Apply Template")
+                    Text(NSLocalizedString("Apply Template", comment: ""))
                         .font(NestTypography.guardianHeadline)
                         .foregroundColor(NestPalette.parentVoice)
 
@@ -38,10 +38,10 @@ struct ApplyTemplateNestSheet: View {
 
                 if allTemplates.isEmpty {
                     VStack(spacing: 16) {
-                        Text("No templates yet")
+                        Text(NSLocalizedString("No templates yet", comment: ""))
                             .font(NestTypography.lullabyBody)
                             .foregroundColor(NestPalette.tenderWhisper)
-                        Text("Save your current day as a template to reuse it")
+                        Text(NSLocalizedString("Save your current day as a template to reuse it", comment: ""))
                             .font(NestTypography.whisperCaption)
                             .foregroundColor(NestPalette.drowsyHint)
                             .multilineTextAlignment(.center)
@@ -67,7 +67,7 @@ struct ApplyTemplateNestSheet: View {
                                             Text(template.title)
                                                 .font(NestTypography.sproutLabel)
                                                 .foregroundColor(NestPalette.parentVoice)
-                                            Text("\(template.blocks.count) blocks • \(template.ageGroup.shortLabel)")
+                                            Text(String(format: NSLocalizedString("%lld blocks • %@", comment: ""), template.blocks.count, template.ageGroup.shortLabel))
                                                 .font(NestTypography.tinyFootprint)
                                                 .foregroundColor(NestPalette.tenderWhisper)
                                         }
@@ -91,11 +91,11 @@ struct ApplyTemplateNestSheet: View {
                 }
             }
         }
-        .alert("Replace blocks?", isPresented: $showReplaceConfirm) {
-            Button("Cancel", role: .cancel) {
+        .alert(NSLocalizedString("Replace blocks?", comment: ""), isPresented: $showReplaceConfirm) {
+            Button(NSLocalizedString("Cancel", comment: ""), role: .cancel) {
                 templateToApply = nil
             }
-            Button("Replace", role: .destructive) {
+            Button(NSLocalizedString("Replace", comment: ""), role: .destructive) {
                 if let template = templateToApply {
                     brain.applyTemplate(template)
                     dismiss()
@@ -103,7 +103,7 @@ struct ApplyTemplateNestSheet: View {
                 templateToApply = nil
             }
         } message: {
-            Text("This will replace your current \(brain.totalCount) blocks with the template.")
+            Text(String(format: NSLocalizedString("This will replace your current %lld blocks with the template.", comment: ""), brain.totalCount))
         }
     }
 }

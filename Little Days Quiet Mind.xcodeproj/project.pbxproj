@@ -9,12 +9,26 @@
 /* Begin PBXBuildFile section */
 		3EFBF44B2F640EBC006DC06E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 3EFBF44A2F640EBC006DC06E /* FirebaseMessaging */; };
 		3EFBF44E2F641200006DC06E /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3EFBF44F2F641200006DC06E /* FirebaseCore */; };
+		LOCDE01A2F640002006DC06E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LOCDE01B2F640002006DC06E /* Localizable.strings */; };
+		LOCEN01A2F640001006DC06E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LOCEN01B2F640001006DC06E /* Localizable.strings */; };
+		LOCES01A2F640003006DC06E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LOCES01B2F640003006DC06E /* Localizable.strings */; };
+		LOCFC01A2F640007006DC06E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LOCFC01B2F640007006DC06E /* Localizable.strings */; };
+		LOCFR01A2F640005006DC06E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LOCFR01B2F640005006DC06E /* Localizable.strings */; };
+		LOCGB01A2F640006006DC06E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LOCGB01B2F640006006DC06E /* Localizable.strings */; };
+		LOCIT01A2F640004006DC06E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LOCIT01B2F640004006DC06E /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3E60B0322F4653A7006605BA /* Little Days Quiet Mind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little Days Quiet Mind.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EFBF44C2F640FDB006DC06E /* Little Days Quiet Mind.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Little Days Quiet Mind.entitlements"; sourceTree = "<group>"; };
 		3EFBF44D2F640FE0006DC06E /* Little-Days-Quiet-Mind-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Little-Days-Quiet-Mind-Info.plist"; sourceTree = "<group>"; };
+		LOCDE01B2F640002006DC06E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		LOCEN01B2F640001006DC06E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		LOCES01B2F640003006DC06E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		LOCFC01B2F640007006DC06E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		LOCFR01B2F640005006DC06E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		LOCGB01B2F640006006DC06E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		LOCIT01B2F640004006DC06E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -44,6 +58,7 @@
 				3EFBF44D2F640FE0006DC06E /* Little-Days-Quiet-Mind-Info.plist */,
 				3EFBF44C2F640FDB006DC06E /* Little Days Quiet Mind.entitlements */,
 				3E60B0342F4653A7006605BA /* parents */,
+				LOCGRP02F640008006DC06E /* Localizations */,
 				3E60B0332F4653A7006605BA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +69,76 @@
 				3E60B0322F4653A7006605BA /* Little Days Quiet Mind.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		LOCDEGRP2F64000A006DC06E /* de.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				LOCDE01B2F640002006DC06E /* Localizable.strings */,
+			);
+			path = de.lproj;
+			sourceTree = "<group>";
+		};
+		LOCENGRP2F640009006DC06E /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				LOCEN01B2F640001006DC06E /* Localizable.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		LOCESGRP2F64000B006DC06E /* es.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				LOCES01B2F640003006DC06E /* Localizable.strings */,
+			);
+			path = es.lproj;
+			sourceTree = "<group>";
+		};
+		LOCFCGRP2F64000F006DC06E /* fr-CA.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				LOCFC01B2F640007006DC06E /* Localizable.strings */,
+			);
+			path = "fr-CA.lproj";
+			sourceTree = "<group>";
+		};
+		LOCFRGRP2F64000D006DC06E /* fr.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				LOCFR01B2F640005006DC06E /* Localizable.strings */,
+			);
+			path = fr.lproj;
+			sourceTree = "<group>";
+		};
+		LOCGBGRP2F64000E006DC06E /* en-GB.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				LOCGB01B2F640006006DC06E /* Localizable.strings */,
+			);
+			path = "en-GB.lproj";
+			sourceTree = "<group>";
+		};
+		LOCGRP02F640008006DC06E /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				LOCENGRP2F640009006DC06E /* en.lproj */,
+				LOCDEGRP2F64000A006DC06E /* de.lproj */,
+				LOCESGRP2F64000B006DC06E /* es.lproj */,
+				LOCITGRP2F64000C006DC06E /* it.lproj */,
+				LOCFRGRP2F64000D006DC06E /* fr.lproj */,
+				LOCGBGRP2F64000E006DC06E /* en-GB.lproj */,
+				LOCFCGRP2F64000F006DC06E /* fr-CA.lproj */,
+			);
+			name = Localizations;
+			sourceTree = "<group>";
+		};
+		LOCITGRP2F64000C006DC06E /* it.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				LOCIT01B2F640004006DC06E /* Localizable.strings */,
+			);
+			path = it.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,11 +184,16 @@
 				};
 			};
 			buildConfigurationList = 3E60B02D2F4653A7006605BA /* Build configuration list for PBXProject "Little Days Quiet Mind" */;
-			developmentRegion = en;
+			developmentRegion = "fr-CA";
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				de,
 				en,
-				Base,
+				es,
+				fr,
+				it,
+				"en-GB",
+				"fr-CA",
 			);
 			mainGroup = 3E60B0292F4653A7006605BA;
 			minimizedProjectReferenceProxies = 1;
@@ -125,6 +215,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				LOCEN01A2F640001006DC06E /* Localizable.strings in Resources */,
+				LOCDE01A2F640002006DC06E /* Localizable.strings in Resources */,
+				LOCES01A2F640003006DC06E /* Localizable.strings in Resources */,
+				LOCIT01A2F640004006DC06E /* Localizable.strings in Resources */,
+				LOCFR01A2F640005006DC06E /* Localizable.strings in Resources */,
+				LOCGB01A2F640006006DC06E /* Localizable.strings in Resources */,
+				LOCFC01A2F640007006DC06E /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
